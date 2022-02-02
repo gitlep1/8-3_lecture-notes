@@ -3,7 +3,14 @@
   ---------------
   Write a function that sums all numbers in an array.
 */
-function sumAllNumbers(numbers) {}
+function sumAllNumbers(numbers) {
+  let total = 0
+
+  for (const number of numbers) {
+    total+=number
+  }
+  return total
+}
 
 console.log(sumAllNumbers([10, 20, 30])); //> 60
 console.log(sumAllNumbers([10 - 10])); //> 0
@@ -16,7 +23,14 @@ console.log(sumAllNumbers([])); //> 0
 
   If there are no states, just print "STATES: ".
 */
-function presentAllStates(states) {}
+function presentAllStates(states) {
+  let names = ''
+
+  for (const state of states) {
+    names += `${state}, `
+  }
+  return `STATES: ${names}`
+}
 
 console.log(presentAllStates(["Alaska", "New York", "Florida"]));
 //> "STATES: Alaska, New York, Florida, "
@@ -28,7 +42,19 @@ console.log(presentAllStates([]));
   ---------------
   Write a function that determines whether or not any of the states provided include a space (i.e. " ") in their name.
 */
-function hasSpace(states) {}
+function hasSpace(states) {
+  for (const state of states) {
+    for (let i = 0; i < state.length; i++) {
+      if (state[i] === ' ') {
+        console.log(true)
+        return true
+      } else {
+        continue;
+      }
+    }
+  }
+    
+}
 
 console.log(hasSpace(["Alaska", "New York", "Florida"])); //> true
 console.log(hasSpace(["Alaska", "Montana", "Florida"])); //> false
@@ -38,7 +64,9 @@ console.log(hasSpace(["Alaska", "Montana", "Florida"])); //> false
   ---------------
   Write a function that returns false if any state abbreviation is longer than two characters.
 */
-function isValid(states) {}
+function isValid(states) {
+  
+}
 
 console.log(isValid(["AK", "NYC", "FL"])); //> false
 console.log(isValid(["AK", "WA", "FL"])); //> true
@@ -48,7 +76,9 @@ console.log(isValid(["AK", "WA", "FL"])); //> true
   ---------------
   Write a function that looks for a state by name. If that state is found, return the state name. If it is not found, return `null`.
 */
-function find(states, name) {}
+function find(states, name) {
+
+}
 
 console.log(find(["Alaska", "New York", "Florida"], "Alaska")); //> "Alaska"
 console.log(find(["Alaska", "New York", "Florida"], "Montana")); //> null

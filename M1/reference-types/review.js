@@ -24,12 +24,12 @@ const nextLottoNums = [11, 22, 35];
 const allNumbers = lotteryNumbers.concat(nextLottoNums);
 
 // // COMMENT ME IN WHEN YOU WANT TO RUN THIS CODE
-// console.log("2a. allNumbers:", allNumbers);
-// console.log("2b. lotteryNumbers:", lotteryNumbers);
-// console.log(
-//   "2c. lotteryNumbers === nextLottoNums:",
-//   lotteryNumbers === nextLottoNums
-// );
+console.log("2a. allNumbers:", allNumbers);
+console.log("2b. lotteryNumbers:", lotteryNumbers);
+console.log(
+  "2c. lotteryNumbers === nextLottoNums:",
+  lotteryNumbers === nextLottoNums
+);
 
 // 3. Fix the code below so that it updates the .firstName property in the object
 
@@ -39,7 +39,7 @@ let person = {
 };
 
 // Hmmm... This line isn't updating the person object. Can you fix it?
-person.firstName.toUpperCase();
+person.firstName = person.firstName.toUpperCase();
 
 // Don't change the line below. When you fix the code, it should log AVERY
 console.log("3. person.firstName:", person.firstName);
