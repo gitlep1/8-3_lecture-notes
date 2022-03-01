@@ -7,47 +7,69 @@
 //  Using this function, compare the price of the house to the price of the car AS NUMBERS
 
 // DO NOT CHANGE THE VALUE OF THESE VARIABLES
+const priceOfHouse = '€1.500.000';
+const priceOfCar = '€20.000';
+const ageOfCat = 20;
+const ageOfDog = 5;
 
-let priceOfHouse = "€1.500.000";
-let priceOfCar = "€20.000";
-// let priceOfHouse = 'looo55ooll'
-// let priceOfCar = 'wooo5ooow'
-
-const moreExpensive = (priceOfHouse, priceOfCar) => {
-  let price1 = ''
-  let price2 = ''
-  let noNums1 = ''
-  let noNums2 = ''
-
-  for (let i = 0; i < priceOfHouse.length; i++) {
-    if (parseFloat(priceOfHouse[i]) || parseFloat(priceOfHouse[i]) === 0) {
-      price1 += priceOfHouse[i]
-    } else {
-      noNums1 += priceOfHouse[i]
-    }
-  }
-
-  for (let i = 0; i < priceOfCar.length; i++) {
-    if (parseFloat(priceOfCar[i]) || parseFloat(priceOfCar[i]) === 0) {
-      price2 += priceOfCar[i]
-    } else {
-      noNums2 += priceOfCar[i]
-    }
-  }
-
-  if (noNums1.length >= priceOfHouse.length && noNums2.length >= priceOfCar.length) {
-    return console.log('No strings contain numbers')
-  } else if (noNums1.length >= priceOfHouse.length) {
-    return console.log('String one contains no numbers')
-  } else if (noNums2.length >= priceOfCar.length) {
-    return console.log('String two contains no numbers')
-  } else {
-    if (Number(price1) > Number(price2)) {
-      console.log("The house is more expensive.");
-    } else {
-      console.log("The car is more expensive.");
-    }
-  }
+if (priceOfHouse > priceOfCar) {
+  console.log('The house is more expensive');
+} else {
+  console.log('The car is more expensive');
 }
 
-moreExpensive(priceOfHouse, priceOfCar)
+// we are assuming the function should only compare string args, and ignore other types
+// assuming everything is in euros, no decimal places
+function comparePrices(price1, price2) {
+  let result = `Neither price 1: ${price1} or price 2: ${price2} contains any currency values to compare`;
+
+  const strPrices = [price1, price2];
+  let strPricesData = {};
+
+  for (let i = 0; i < strPrices.length; i++) {
+    strPricesData[i] = {
+      strPrice: strPrices[i],
+      isString: false,
+      containsNumbers: false,
+      price: NaN,
+      // todo: *wishlist* get currency type to be able to convert between currencies
+    };
+    let tempPrice = '';
+
+    if (typeof strPrices[i] === 'string') {
+      strPricesData[i].isString = true;
+
+      for (let char of strPrices[i]) {
+        let tempChar = parseInt(char);
+        if (typeof tempChar === 'number') {
+          if (!isNaN(tempChar)) {
+            strPricesData[i].containsNumbers = true;
+            tempPrice += tempChar.toString();
+          }
+        }
+      }
+    }
+    strPricesData[i].price = parseFloat(tempPrice); // '33.65'
+  }
+
+  if (
+    (strPricesData[0].containsNumbers === false &&
+      strPricesData[1].containsNumbers === true) ||
+    strPricesData[0].price < strPricesData[1].price
+  ) {
+    result = `${strPricesData[1].strPrice} is more expensive than ${strPricesData[0].strPrice}`;
+  } else if (
+    (strPricesData[1].containsNumbers === false &&
+      strPricesData[0].containsNumbers === true) ||
+    strPricesData[0].price > strPricesData[1].price
+  ) {
+    result = `${strPricesData[0].strPrice} is more expensive than ${strPricesData[1].strPrice}`;
+  }
+
+  return result;
+}
+
+console.log(comparePrices(priceOfCar, ageOfCat)); // <-- €20.000 is more expensive than 20
+console.log(comparePrices(ageOfDog, ageOfCat)); // <-- Neither price 1: 5 or price 2: 20 contains any currency values to compare
+console.log(comparePrices(priceOfCar, priceOfHouse)); // <-- €1.500.000 is more expensive than €20.000
+console.log(comparePrices(priceOfHouse, priceOfCar)); // <-- €1.500.000 is more expensive than €20.000
