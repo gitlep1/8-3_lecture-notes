@@ -58,6 +58,7 @@ function getPeopleUnder25(people) {
  * @returns {Object[]} - An array of people.
  */
 function getPeopleWithGmail(people) {
+<<<<<<< HEAD
   let result = []
 
   for (const person of people) {
@@ -71,6 +72,20 @@ function getPeopleWithGmail(people) {
   }
 
   return result
+=======
+  // DEAR INSTRUCTOR: I'm assuming we aren't looking other google domain aliases, like google.mail
+  let result = [];
+
+  for (const person of people) {
+    if (person.email) {
+      if (person.email.includes("gmail.com")) {
+        result.push(person);
+      }
+    }
+  }
+
+  return result;
+>>>>>>> c62358dad36a156aa98094f9a78ac2bd2d2c2216
 }
 
 module.exports = {

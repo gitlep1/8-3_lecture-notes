@@ -32,7 +32,7 @@ function presentAllStates(states) {
   return `STATES: ${names}`
 }
 
-console.log(presentAllStates(["Alaska", "New York", "Florida"]));
+console.log(presentAllStates(['Alaska', 'New York', 'Florida']));
 //> "STATES: Alaska, New York, Florida, "
 console.log(presentAllStates([]));
 //> "STATES: "
@@ -56,8 +56,8 @@ function hasSpace(states) {
     
 }
 
-console.log(hasSpace(["Alaska", "New York", "Florida"])); //> true
-console.log(hasSpace(["Alaska", "Montana", "Florida"])); //> false
+console.log(hasSpace(['Alaska', 'New York', 'Florida'])); //> true
+console.log(hasSpace(['Alaska', 'Montana', 'Florida'])); //> false
 
 /*
   IS VALID
@@ -68,8 +68,8 @@ function isValid(states) {
   
 }
 
-console.log(isValid(["AK", "NYC", "FL"])); //> false
-console.log(isValid(["AK", "WA", "FL"])); //> true
+console.log(isValid(['AK', 'NYC', 'FL'])); //> false
+console.log(isValid(['AK', 'WA', 'FL'])); //> true
 
 /*
   KEBAB CASE
@@ -78,7 +78,7 @@ console.log(isValid(["AK", "WA", "FL"])); //> true
 */
 function kebabCase(states) {}
 
-console.log(kebabCase(["Alaska", "New York", "Florida"]));
+console.log(kebabCase(['Alaska', 'New York', 'Florida']));
 //> [ "alaska", "new-york", "florida" ]
 console.log(kebabCase([]));
 //> []
@@ -92,8 +92,8 @@ function find(states, name) {
 
 }
 
-console.log(find(["Alaska", "New York", "Florida"], "Alaska")); //> "Alaska"
-console.log(find(["Alaska", "New York", "Florida"], "Montana")); //> null
+console.log(find(['Alaska', 'New York', 'Florida'], 'Alaska')); //> "Alaska"
+console.log(find(['Alaska', 'New York', 'Florida'], 'Montana')); //> null
 
 /*
   FILTER ABBREVIATIONS
@@ -102,7 +102,7 @@ console.log(find(["Alaska", "New York", "Florida"], "Montana")); //> null
 */
 function filterAbbreviations(states) {}
 
-console.log(filterAbbreviations(["AK", "MT", "WA", "NYC"]));
+console.log(filterAbbreviations(['AK', 'MT', 'WA', 'NYC']));
 //> [ "AK", "MT", "WA" ]
-console.log(filterAbbreviations(["Alaska", "New York", "Florida"]));
+console.log(filterAbbreviations(['Alaska', 'New York', 'Florida']));
 //> []
