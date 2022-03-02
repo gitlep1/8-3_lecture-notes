@@ -7,7 +7,9 @@
  *
  * @returns {Number} - a random decimal number between 30 and 70
  */
-function randomDecimal30To70() {}
+function randomDecimal30To70() {
+  return random = Math.random() * (70 - 30) + 30
+}
 
 /**
  * REVIEW ACTIVITY - Part 2
@@ -19,7 +21,9 @@ function randomDecimal30To70() {}
  *
  * @returns {Integer} - a random integer between 30 and 70
  */
-function randomInteger30To70() {}
+function randomInteger30To70() {
+  return random = Math.floor(Math.random() * (70 - 29) + 30)
+}
 
 /**
  * ACTIVITY 1
@@ -38,11 +42,38 @@ function randomInteger30To70() {}
  * @param {String} key
  * @returns {Boolean}
  **/
-function isKeyInObject1(obj, key) {}
+function isKeyInObject1(obj, key) {
+  let boo = false
 
-function isKeyInObject2(obj, key) {}
+  if (!Object.keys(obj).includes(key)) {
+    return boo
+  } else {
+    boo = true
+    return boo
+  }
+}
 
-function isKeyInObject3(obj, key) {}
+function isKeyInObject2(obj, key) {
+  let keyInObject = false
+
+  for (let k in obj) {
+    if (key === k) {
+      keyInObject = true
+    }
+  }
+
+  return keyInObject
+}
+
+function isKeyInObject3(obj, key) {
+  for (const [objKey, value] of Object.entries(obj)) {
+    if (objKey === key) {
+      return true
+    } else {
+      return false
+    }
+  }
+}
 
 let exampleObject = {
   timesIveBeenToBrazil: 0,
@@ -65,13 +96,29 @@ let exampleObject = {
  * @returns {String} - name of the highest paid role
  *
  */
-function highestSalary(roles) {}
+function highestSalary(roles) {
+  let roleName = ""
+  let roleSalary = 0
+
+  for (let jobTitle in roles) {
+    // console.log(jobTitle)
+    // console.log(roles[jobTitle])
+    if (roles[jobTitle] > roleSalary) {
+      roleSalary = roles[jobTitle]
+      roleName = jobTitle
+    }
+  }
+  // console.log(roleName)
+  return roleName
+}
 
 let exampleRoles = {
   juniorDev: 90000,
   seniorDev: 160000,
   engineeringManager: 200000,
 };
+
+highestSalary(exampleRoles)
 
 /**
  * RESEARCH ACTIVITY
