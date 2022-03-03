@@ -23,7 +23,22 @@ greet(); //> "Welcome to NASA, space cadet!"
  * .
  * (you may need to use a ternary operator and an implicit return)
  */
+const greet = (name) => name ? `Welcome to NASA, ${name}!` : `Welcome to NASA, space cadet!`
+
+greet('Tony')
+greet()
 
 /**
  * 3. Are there any benefits to using the arrow function syntax? Are there any limitations? Write a brief response below.
  */
+
+/* 
+Some benefits are: 
+  better readability
+  syntax automatically binds this to the surrounding code's context
+  flexible
+
+Some limitations are:
+  "this" keyword will act differently depending on the context in the arrow function vs regular function
+
+*/

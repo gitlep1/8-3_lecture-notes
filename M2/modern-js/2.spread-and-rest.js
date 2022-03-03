@@ -8,6 +8,11 @@
 const astronauts = ["Jessica Watkins", "Robert Shane", "Nicole Mann"];
 const [first, ...others] = astronauts;
 
+/*
+code above is a rest syntax because it is getting the rest of the array.
+*/
+
+
 /**
  * 3. Is the code below an example of the "rest" or "spread" syntax? How do you know? Write a brief response.
  */
