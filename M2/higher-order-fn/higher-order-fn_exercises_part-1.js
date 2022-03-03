@@ -2,7 +2,7 @@
  * Take a look at the functions below. Are any of the functions a higher order function?
  * If so, which ones and why so? If not, why not?
  */
-
+// None are higher order functions because no functions as parameters and no nested functions.
 function truthy() {
   return true;
 }
@@ -17,7 +17,7 @@ falsy(); //> false
  * Take a look at the functions below. Are any of the functions a higher order function?
  * If so, which ones and why so? If not, why not?
  */
-
+// None are higher order functions because no function invoke.
 function left() {
   return 'Left';
 }
@@ -34,7 +34,7 @@ function go(goLeft = true) {
  * Take a look at the functions below. Are any of the functions a higher order function?
  * If so, which ones and why so? If not, why not?
  */
-
+// Yes because go is using a function as a parameter.
 const directions = [];
 
 function storeDirections(direction) {
@@ -63,6 +63,44 @@ function transform(text, fn) {
 
   return fn(text);
 }
+
+function capitalize() {
+  return function(string) {
+    let capital = string.toUpperCase()
+    return capital;
+  };
+}
+console.log(transform('coding', capitalize()));
+
+function lowercase() {
+  return function(string) {
+    let lowercased = string.toLowerCase();
+    return lowercased;
+  }
+}
+console.log(transform('CodEr', lowercase()));
+
+function dashes() {
+  return function(string) {
+    let dashedWords = string.replaceAll(' ', '-');
+    return dashedWords;
+  }
+}
+console.log(transform('code code code', dashes()));
+
+function acronym() {
+  let str = '';
+  return function(string) {
+    let uppercase = string.toUpperCase()
+    let words = uppercase.split(' ');
+    for (let letter of words) {
+      let firstLetter = letter.charAt(0)
+      str += firstLetter
+    }
+    return str;
+  }
+}
+console.log(transform('up down left', acronym()))
 
 /**
  * Use the function above to transform the text in the following ways. For each line below, you will need to write an anonymous function.
