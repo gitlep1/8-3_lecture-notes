@@ -5,48 +5,37 @@ const first = "Nicole";
 const middle = "Aunapu";
 const last = "Mann";
 
-const obj = {
+// create an object with three key value pairs: { first: "Nicole", middle: "Aunapu", last: "Mann" }
+const fullName = {
   first,
   middle,
-  last
-}
+  last,
+};
+
+// Object short-hand converts the variable assignment operator "=" into the key/val associator operator ":"
 
 /**
  * 2. What are some of the benefits of using object shorthand? Are there any limitations? Write a brief response below.
  */
 
-/*
-you don't have to repeat yourself
+// shorter!
 
-*/
+// BUT
+
+// you're stuck with the same names
 
 /**
  * 3. The function below expects that sometimes name will not be provided. Update the greet() function so that it uses default parameters.
  */
-const greet = (name = 'sapce cadet') => `Welcome to NASA, ${name}!`
+const greet = (name = "space cadet") => `Welcome to NASA, ${name}!`;
 
-greet("Jessica"); //> "Welcome to NASA, Jessica!"
-greet(); //> "Welcome to NASA, space cadet!"
+console.log(greet("Jessica")); //> "Welcome to NASA, Jessica!"
+console.log(greet()); //> "Welcome to NASA, space cadet!"
 
 /**
  * 4. What are some of the benefits of using default parameters? Are there any limitations? Write a brief response below.
  */
 
-/*
-benefits:
-  Any primitive value or object.
-  You don't have to resort to edge cases for parameters with no value.
-  You can set a default parameter even if that parameter doesn't exist in the function callback so you don't have to create a variable for it.
-*/
-
-// const test = (num1, num2, num3, arr = [], obj = {name: 'lola'}) => {
-//   arr.push(num1, num2, num3)
-//   obj.age = 30
-//   return [arr, obj]
-// }
-
-
-// const num1 = 2
-// const num2 = 3
-// const num3 = 4
-// console.log(test(num1, num2, num3))
+// removing conditional logic from our function definitions
+// BUT
+// you have to be careful about default values that are arrays or objects
