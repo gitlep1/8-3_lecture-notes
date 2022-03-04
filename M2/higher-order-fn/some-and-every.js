@@ -52,7 +52,10 @@ console.log(
  * 1A. Which version of hasOddElem is more reusable? Why? Write a brief response below.
  *       -> Hint: If you had to answer the question "Is there any element of the array [10, 20, 30, 40] that is odd?" which version of the code would be more useful? Why?
  */
-
+console.log(
+  "[10, 20, 30, 40] has an odd element.",
+  hasOddElemVersion2([10, 20, 30, 40])
+)
 /**
  * ##################################
  * ##################################
@@ -111,7 +114,17 @@ console.log(
 
 /**
  * 2A. What similarities do you see in each of these functions? How is each function different? Write a brief response.
+ * 
+ * all three functions are similar because they are all looping through the array using a for...of loop.
+ * 
+ * hasOdd and hasEven are different because hasOdd is using n % 2 === 1 to check for odds and hasEven is using n % 2 === 0 to check for evens.
+ * 
+ * 
  */
+
+
+
+
 
 /**
  * ##################################
@@ -149,14 +162,14 @@ console.log("exampleNums has an odd element:", some(exampleNums, isOdd));
 /**
  * 3A. Your turn! Use some() to answer the question: Is there any element of exampleNums that is even?
  */
-
-console.log("exampleNums has an even element:");
+const isEven = (n) => n % 2 === 0
+console.log("exampleNums has an even element:", some(exampleNums, isEven));
 
 /**
  * 3B. Use some() to answer the question: Is there any element of exampleNums that is larger than 50?
  */
-
-console.log("exampleNums has an element that is larger than 50:");
+const largerThan50 = (n) => n > 50
+console.log("exampleNums has an element that is larger than 50:", some(exampleNums, largerThan50));
 
 /**
  * ##################################
@@ -174,7 +187,14 @@ console.log("exampleNums has an element that is larger than 50:");
  */
 console.log("\n############# 4. everyElementBelow50 #############\n");
 
-const everyElementBelow50 = (nums) => {};
+const everyElementBelow50 = (nums) => {
+  for (let n of nums) {
+    if (n > 50) {
+      return false
+    }
+  }
+  return true
+};
 
 console.log(
   "Every element of exampleNums is below 50:",
@@ -201,8 +221,16 @@ console.log(
  * @param {Function} test - a function that accepts a single array element and returns true or false.
  * @returns {Boolean} - tells us if every element of the input array passes the input test
  */
+
 console.log("\n############# 5. EVERY #############\n");
-const every = (array, test) => {};
+const every = (array, test) => {
+  for (let arr of array) {
+    if (!test(arr)) {
+      return false
+    }
+  }
+  return true
+};
 
 console.log("Every element of exampleNums is odd:", every(exampleNums, isOdd));
 console.log(
