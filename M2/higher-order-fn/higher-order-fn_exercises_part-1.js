@@ -49,7 +49,7 @@ function go(direction, operation) {
 go('Left', storeDirections);
 go('Right', storeDirections);
 go('Up', storeDirections);
-console.log(directions); //> ["Left", "Right", "Up"]
+// console.log(directions); //> ["Left", "Right", "Up"]
 
 /**
  * Take a look at the higher order function below.
@@ -70,7 +70,7 @@ function capitalize() {
     return capital;
   };
 }
-console.log(transform('coding', capitalize()));
+// console.log(transform('coding', capitalize()));
 
 function lowercase() {
   return function(string) {
@@ -78,7 +78,7 @@ function lowercase() {
     return lowercased;
   }
 }
-console.log(transform('CodEr', lowercase()));
+// console.log(transform('CodEr', lowercase()));
 
 function dashes() {
   return function(string) {
@@ -86,7 +86,7 @@ function dashes() {
     return dashedWords;
   }
 }
-console.log(transform('code code code', dashes()));
+// console.log(transform('code code code', dashes()));
 
 function acronym() {
   let str = '';
@@ -100,7 +100,7 @@ function acronym() {
     return str;
   }
 }
-console.log(transform('up down left', acronym()))
+// console.log(transform('up down left', acronym()))
 
 /**
  * Use the function above to transform the text in the following ways. For each line below, you will need to write an anonymous function.
@@ -119,7 +119,7 @@ console.log(transform('up down left', acronym()))
  * The each fn loops through the given array and runs the callback function on each of it's elements.
  */
 function each(arr, fn) {
-  // write your code here
+  arr.forEach(ele => fn(ele))
 }
 
 // The following call to each should print
@@ -128,7 +128,7 @@ function each(arr, fn) {
 // 3
 // 4
 each([1, 2, 3, 4], function (value) {
-  console.log(value);
+  // console.log(value);
 });
 
 // The following call to each should print
@@ -137,7 +137,7 @@ each([1, 2, 3, 4], function (value) {
 // 6
 // 8
 each([1, 2, 3, 4], function (value) {
-  console.log(value * 2);
+  // console.log(value * 2);
 });
 
 /**
@@ -147,15 +147,21 @@ each([1, 2, 3, 4], function (value) {
  * The map fn should return a new array where each new element is the return value from the anonymous function with the argument as the original element value.
  */
 function map(arr, fn) {
-  // write your code here
+  let newArr = []
+  for (let element of arr) {
+    let innerFn = fn(element)
+    newArr.push(innerFn)
+  }
+  // console.log(newArr)
+  return newArr
 }
+
 
 // The following call to map should return
 // [2, 4, 6, 8];
 map([1, 2, 3, 4], function (value) {
   return value * 2;
 });
-
 /**
  * Write a fn called reject which accepts two parameters:
  *  - an array
@@ -163,7 +169,16 @@ map([1, 2, 3, 4], function (value) {
  * The reject fn should return a new array containing all of the values that do not return true to the callback
  */
 function reject(arr, fn) {
-  // write your code here
+  let newArr = []
+
+  for (let element of arr) {
+    let innerFn = fn(element)
+    if (!innerFn) {
+      newArr.push(element)
+    }
+  }
+  // console.log(newArr)
+  return newArr
 }
 
 // The following call to reject should return
