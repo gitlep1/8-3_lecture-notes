@@ -4,7 +4,7 @@
  * In the following activities, we will try to answer a few questions about the following array of integers:
  */
 
-let exampleNums = [15, 9, 49, 27, 17, 51];
+let exampleNums = [15, 9, 49, 51, 27, 17];
 
 /**
  * Along the way, we will see some examples of how you could use JavaScript to help answer those questions.
@@ -56,6 +56,22 @@ console.log(
   "[10, 20, 30, 40] has an odd element.",
   hasOddElemVersion2([10, 20, 30, 40])
 )
+
+console.log(
+  "[10, 20, 30, 40] has an odd element:",
+  hasOddElemVersion2([10, 20, 30, 40])
+);
+
+/*
+
+  Version 2: more reusable since it has a parameter.
+
+  version 2 helps answer a broader range of questions: Is there any element of <SOME ARRAY OF NUMBERS> that is odd?
+
+  Function parameters provide you with more flexibility!
+
+*/
+
 /**
  * ##################################
  * ##################################
@@ -125,6 +141,14 @@ console.log(
 
 
 
+/*
+  The ONLY difference is which condition we are searching for in the IF statement.
+
+  otherwise, these functions are structurally identical.
+
+  WHY are they so similar?
+     Because each function is trying to answer a really similar question
+*/
 
 /**
  * ##################################
@@ -165,11 +189,34 @@ console.log("exampleNums has an odd element:", some(exampleNums, isOdd));
 const isEven = (n) => n % 2 === 0
 console.log("exampleNums has an even element:", some(exampleNums, isEven));
 
+console.log(
+  "exampleNums has an even element:",
+  some(exampleNums, (n) => n % 2 === 0)
+);
+
 /**
  * 3B. Use some() to answer the question: Is there any element of exampleNums that is larger than 50?
  */
 const largerThan50 = (n) => n > 50
 console.log("exampleNums has an element that is larger than 50:", some(exampleNums, largerThan50));
+
+console.log(
+  "exampleNums has an element that is larger than 50:",
+  some(exampleNums, (n) => n > 50)
+);
+
+// Does [1,2,3,4,5] have an element less than -1 OR does [1,2,3,4,5] have an element greater than 4?
+
+console.log(
+  "any element less than -1 OR does it have an element greater than 4?",
+  some([1, 2, 3, 4, 5], (n) => n < -1) || some([1, 2, 3, 4, 5], (n) => n > 4)
+);
+
+// Does [1,2,3,4,5] have an element that is (either less than -1 or greater than 4)?
+console.log(
+  " Does [1,2,3,4,5] have an element that is (either less than -1 or greater than 4)?",
+  some([1, 2, 3, 4, 5], (n) => n < -1 || n > 4)
+);
 
 /**
  * ##################################
@@ -194,16 +241,22 @@ const everyElementBelow50 = (nums) => {
     }
   }
   return true
+  //   console.log("checking if", n, "is less than 50");
+  //   if (!(n < 50)) {
+  //     return false;
+  //   }
+  // }
+  // return true;
 };
 
 console.log(
   "Every element of exampleNums is below 50:",
-  everyElementBelow50(exampleNums)
+  everyElementBelow50(exampleNums) // false
 );
 
 console.log(
   "Every element of [1,2,3,49] is below 50:",
-  everyElementBelow50([1, 2, 3, 49])
+  everyElementBelow50([1, 2, 3, 49]) // true
 );
 /**
  * ##################################
@@ -230,6 +283,21 @@ const every = (array, test) => {
     }
   }
   return true
+
+// For each element of the array:
+// check if the passes the test
+//   -> if it does, continue
+//   -> if it doesn't,
+// If we make it through all of our array, the answer is TRUE
+const every = (array, test) => {
+  for (let n of array) {
+    if (test(n)) {
+      continue;
+    } else {
+      return false;
+    }
+  }
+  return true;
 };
 
 console.log("Every element of exampleNums is odd:", every(exampleNums, isOdd));
@@ -241,3 +309,6 @@ console.log(
   "Every element of exampleNums is below 50:",
   every(exampleNums, (n) => n < 50)
 );
+
+exampleNums.every((n) => n < 50);
+exampleNums.some((n) => n < 50);
