@@ -283,22 +283,22 @@ const every = (array, test) => {
     }
   }
   return true
-
+};
 // For each element of the array:
 // check if the passes the test
 //   -> if it does, continue
 //   -> if it doesn't,
 // If we make it through all of our array, the answer is TRUE
-const every = (array, test) => {
-  for (let n of array) {
-    if (test(n)) {
-      continue;
-    } else {
-      return false;
-    }
-  }
-  return true;
-};
+// const every = (array, test) => {
+//   for (let n of array) {
+//     if (test(n)) {
+//       continue;
+//     } else {
+//       return false;
+//     }
+//   }
+//   return true;
+// };
 
 console.log("Every element of exampleNums is odd:", every(exampleNums, isOdd));
 console.log(
