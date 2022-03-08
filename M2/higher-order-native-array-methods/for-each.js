@@ -28,7 +28,7 @@ function printTeamSupport(team) {
 // With Array.forEach(fn) we can do this
 // returns undefined even though printTeamSupport has a return value
 // because forEach explicitly returns undefined
-console.log(soccerTeams.forEach(printTeamSupport));
+// console.log(soccerTeams.forEach(printTeamSupport));
 
 soccerTeams.forEach(function (team) {
   console.log(`I am a super fan of ${team}: this is the anonymous function`);
@@ -48,12 +48,13 @@ soccerTeams.forEach(function (team, index) {
   soccerTeamsV2[index].fanMessage = printTeamSupport(team);
 });
 
-console.log(soccerTeamsV2);
+// console.log(soccerTeamsV2);
 
 /**
  * 1
  *
  * The .forEach() method's callback function has up to three parameters. What are these parameters?
+ *
  */
 // element, index, array
 
