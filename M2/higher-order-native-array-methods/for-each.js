@@ -55,6 +55,7 @@ console.log(soccerTeamsV2);
  *
  * The .forEach() method's callback function has up to three parameters. What are these parameters?
  */
+// element, index, array
 
 /**
  * 2
@@ -63,21 +64,20 @@ console.log(soccerTeamsV2);
  */
 
 // do not edit the comics object
-// const comics = [
-//   { title: 'Calvin & Hobbes', author: 'Bill Watterson', kind: 'print' },
-//   { title: 'Zen Pencils', author: 'Gavin Aung Than', kind: 'web' },
-//   { title: 'Nancy', author: 'Olivia James', kind: 'print' },
-//   { title: 'False Knees', author: 'Joshua Barkman', kind: 'web' },
-// ];
+const comics = [
+  { title: 'Calvin & Hobbes', author: 'Bill Watterson', kind: 'print' },
+  { title: 'Zen Pencils', author: 'Gavin Aung Than', kind: 'web' },
+  { title: 'Nancy', author: 'Olivia James', kind: 'print' },
+  { title: 'False Knees', author: 'Joshua Barkman', kind: 'web' },
+];
 
-// function printAllComics(comics) {
-//   // Write your code here.
-//   for (let comic of comics) {
-//     console.log(`${comic.title} by ${comic.author}`);
-//   }
-// }
+function printAllComics(comics) {
+  // Write your code here.
+  let i = 1
+  comics.forEach(comic => console.log(`(${i} out of ${comics.length}) "${comic.title}" by ${comic.author}${i++}`))
+}
 
-// printAllComics(comics);
+printAllComics(comics);
 
 /**
  * 3
@@ -89,7 +89,8 @@ console.log(soccerTeamsV2);
 3. Nancy" by Olivia James
 4. False Knees" by Joshua Barkman
 */
-
+  // let i = 1
+  // comics.forEach(comic => console.log(`${i} "${comic.title}" by ${comic.author}${i++}`))
 /**
  * 4
  * 
@@ -100,3 +101,6 @@ console.log(soccerTeamsV2);
 (3 out of 4) Nancy" by Olivia James
 (4 out of 4) False Knees" by Joshua Barkman
 */
+
+//   let i = 1
+//   comics.forEach(comic => console.log(`(${i} out of ${comics.length}) "${comic.title}" by ${comic.author}${i++}`))
