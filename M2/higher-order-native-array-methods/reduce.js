@@ -67,6 +67,7 @@ console.log(sum3); // => 15
 
 function stringConcat(arr) {
   // your code here
+  
 }
 
 console.log(stringConcat([1, 2, 3])); // "123"
