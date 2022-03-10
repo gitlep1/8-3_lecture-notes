@@ -39,7 +39,7 @@ function sum(arr) {
   return res;
 }
 
-console.log(sum(numbers));
+// console.log(sum(numbers));
 
 // accumulator pattern + higher order function
 
@@ -60,7 +60,7 @@ function getSum(a, b) {
   return a + b;
 }
 
-console.log(getArrSum(numbers, getSum));
+// console.log(getArrSum(numbers, getSum));
 
 // accumulator pattern + reduce native array method
 let sum0 = numbers.reduce((accumulator, currentValue) => {
@@ -69,7 +69,7 @@ let sum0 = numbers.reduce((accumulator, currentValue) => {
   return accumulator + currentValue; // in the background the accumulator value is updated to equal this result of this expression
 }, 0); // step 1 of accumulator pattern (default value and type)
 
-console.log(sum0);
+// console.log(sum0);
 
 let numbers2 = [1, 2, 3, 4];
 
@@ -78,7 +78,7 @@ let sum1 = numbers2.reduce((acc, el) => {
   return acc + el;
 });
 
-console.log(sum1); // => 10
+// console.log(sum1); // => 10
 
 // validate our element values are correct
 let numbers3 = ['string'];
@@ -90,7 +90,7 @@ let sumNumbers = numbers3.reduce((acc, el) => {
   return acc + el;
 }, 0);
 
-console.log(sumNumbers);
+// console.log(sumNumbers);
 
 // handling an empty array
 let numbers4 = [];
@@ -102,7 +102,7 @@ let sumNumbers4 = numbers4.reduce((acc, el) => {
   return acc + el;
 }, 0);
 
-console.log(sumNumbers4);
+// console.log(sumNumbers4);
 
 /**
  * 2
@@ -146,8 +146,10 @@ let sum3 = arr2.reduce(adder, 5);
  */
 
 function stringConcat(arr) {
-  // your code here
-  
+  return arr.reduce((ele1, ele2) => {
+    ele1 = ele1.toString()
+    return ele1 + ele2
+  })
 }
 
 // console.log(stringConcat([1, 2, 3])); // "123"
@@ -160,7 +162,14 @@ function stringConcat(arr) {
  */
 
 function totalVotes(arr) {
-  // your code here
+  let count = 0
+
+  for (const ar of arr) {
+    if (ar.voted === true) {
+      count++
+    }
+  }
+  return count
 }
 
 const voters = [
@@ -177,6 +186,7 @@ const voters = [
   { name: 'Jeff', age: 30, voted: true },
   { name: 'Zack', age: 19, voted: false },
 ];
+
 // console.log(totalVotes(voters)); // 7
 
 /**
@@ -186,7 +196,9 @@ const voters = [
  */
 
 function shoppingSpree(arr) {
-  // your code here
+  return arr.reduce((ele1, ele2) => {
+    return {price: ele1.price + ele2.price}
+  })
 }
 
 const wishlist = [
@@ -207,12 +219,14 @@ const wishlist = [
  */
 
 function flatten(arr) {
-  // your code here
+  return arr.reduce((arr1, arr2) => {
+    return arr1.concat(arr2)
+  })
 }
 
 const arrays = [['1', '2', '3'], [true], [4, 5, 6]];
 
-// console.log(flatten(arrays)); // ["1", "2", "3", true, 4, 5, 6];
+console.log(flatten(arrays)); // ["1", "2", "3", true, 4, 5, 6];
 
 /**
  * 8
@@ -223,10 +237,23 @@ const arrays = [['1', '2', '3'], [true], [4, 5, 6]];
  */
 
 function voterResults(arr) {
-  // your code here
+  const res = {
+    numYoungVotes: 0,
+    numYoungPeople: arr.reduce((acc, el) => {
+      if (el.voted === true && el.age < 25 && el.age > 10) {
+        console.log('called')
+        return acc + 1
+      }
+      return acc + 0
+    }, 0),
+    numMidVotesPeople: 0,
+    numMidsPeople: 0,
+    numOldVotesPeople: 0,
+    numOldsPeople: 0
+  }
 }
 
-// console.log(voterResults(voters)); // Returned value shown below:
+console.log(voterResults(voters)); // Returned value shown below:
 /*
 { numYoungVotes: 1,
   numYoungPeople: 4,
