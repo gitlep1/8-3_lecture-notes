@@ -5,11 +5,17 @@
  * What is a callback function?
  */
 
+// any data type
+// a callback function is a function that will execute after another function has finished executing / Any function that is passed as an argument to another function.
+
 /**
  * 2
  *
  * The .every() method's callback function has up to three parameters. What are these parameters?
  */
+
+// element, index, array
+
 /**
  * 3
  *
@@ -30,6 +36,8 @@ function isPrintComic(comic) {
 const arePrintcomics = comics.every(isPrintComic);
 console.log(arePrintcomics); //> false
 
+// I expect the .every() method to log all the comics that have the value "print" for the key "kind".
+
 /**
  * 4
  *
@@ -38,10 +46,13 @@ console.log(arePrintcomics); //> false
 
 function allcomicsHaveTitles(comics) {
   let result = true;
-  for (let comic of comics) {
-    if (!comic.title) result = false;
-  }
-  return result;
+
+  return comics.every((comic) => {
+    if (!comic.title) {
+      result = false
+    }
+    return result
+  })
 }
 
 const haveTitles = allcomicsHaveTitles(comics);
@@ -52,3 +63,5 @@ console.log(haveTitles); //> false
  *
  * The callback function inside of the .every() method coerces the returned value into a boolean. What does the previous sentence mean? Describe in your own words.
  */
+
+// The previous sentence means it changes the boolean value of result.

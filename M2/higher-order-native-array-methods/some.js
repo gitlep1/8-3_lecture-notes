@@ -3,7 +3,7 @@
  *
  * How does the .some() method differ from the .every() method? How is it similar?
  */
-
+    // the some mthod differs for the every method because the some method only needs atleast 1 element to satisfy the condition while every needs every element to satify the condition.
 /**
  * 2
  *
@@ -23,3 +23,5 @@ function isWebComic(comic) {
 
 const result = comics.some(isWebComic);
 console.log(result); //> true
+
+// the isWebComic function gets called 2 times because it is checking if the key "kind" of the current comic has a value of "web" and since the 1st comic doesn't not have that value it continues calling the function then the 2nd comic has that value so it stops calling the function.
