@@ -10,8 +10,11 @@ const weatherData = require('./weather-data.js');
  * @param {Object[]} forecast
  * @returns {Object[]} - filtered list containing warm days
  */
-function daysWarmerThan50(forecast) {}
+function daysWarmerThan50(forecast) {
+  return forecast.filter(ele => ele.highTemp > 50)
+}
 
+// console.log(daysWarmerThan50(weatherData))
 /**
  * 2. Get a list of the highs and lows for each day.
  *
@@ -22,7 +25,16 @@ function daysWarmerThan50(forecast) {}
  *
  * tempRanges(weatherData) // => [[38, 50], [33, 41], [34, 49], [44, 52], [28, 49], [34, 41], [44, 56]]
  */
-function tempRanges(forecast) {}
+function tempRanges(forecast) {
+  let temps = forecast.map(ele => {
+    let arr = []
+    arr.push(ele.lowTemp, ele.highTemp)
+    return arr
+  })
+  return temps
+}
+
+// console.log(tempRanges(weatherData))
 
 /**
  * 3. Print out a weather summary for every day in the seven day forecast.
@@ -37,12 +49,23 @@ function tempRanges(forecast) {}
  * // => ...
  * // => "Today there is a high of 56 with a 2% chance of rain"
  */
-function logWeatherSummary(forecast) {}
+function logWeatherSummary(forecast) {
+  return forecast.map((ele) => {
+    return `Today there is a high of ${ele.highTemp} with a ${ele.precipitation.chance * 100}% chance of ${ele.precipitation.type}`
+  })
+}
+
+// console.log(logWeatherSummary(weatherData))
 
 /**
  * 4. Find the first day this week that it might snow
  */
-function findSnowDay(forecast) {}
+function findSnowDay(forecast) {
+  let snowing = forecast.find(ele => ele.precipitation.type === 'snow')
+  return snowing
+}
+
+console.log(findSnowDay(weatherData))
 
 /**
  * 5. Get a list of days of the week that the wind will be above 15 mph.
@@ -99,4 +122,4 @@ function findDayByTemp(forecast, temperature) {
   return weekDays[firstWeatherDayIndex];
 }
 
-console.log(findDayByTemp(weatherData, 34));
+// console.log(findDayByTemp(weatherData, 34));
