@@ -11,30 +11,27 @@ const displayUser = ({ results }) => {
   const section = document.createElement("section");
   section.classList.add("card");
 
+  // display the title, first name, lastname
   const h2 = document.createElement("h2");
   h2.textContent = fullName;
 
+  // display the email
   const p = document.createElement("p");
   p.textContent = email;
 
+  // display the profile photo
   const img = document.createElement("img");
   img.setAttribute("src", picture.large);
   img.setAttribute("alt", fullName);
-
-  // display title, first name, last name
-
-  // dislay photo
-
-  // display email
 
   // append all the elements to the dom
   section.append(img, h2, p);
   document.querySelector(".people").append(section);
 };
 
-// create a function to display errors from the api response
+// create a function to display errors from the api call
 const displayError = (error) => {
-  const section = document.querySelector(".error");
+  const section = document.querySelector("section.error");
   section.style.display = "block";
 
   // add the something went wrong paragraph
@@ -50,11 +47,14 @@ const displayError = (error) => {
 };
 
 const button = document.querySelector("button");
-button.addEventListener("click", () => {
-  // clear out old user data
-  const people = document.querySelector(".people");
 
+console.log(button.textContent);
+
+button.addEventListener("click", () => {
+  // clear out the old user data
+  const people = document.querySelector(".people");
   people.innerHTML = "";
+
   // Fetch data from base url using fetch and promises
   fetch(BASE_URL)
     .then((res) => {
